@@ -12,7 +12,9 @@ namespace FindMeARoommate.DataLayer.DatabaseContext
     {
       
        
-            public RoommateDBContext() { }
+            public RoommateDBContext() 
+        {
+        }
 
             public DbSet<Student> Students { get; set; }
           public DbSet<Dormitory> Dormitories { get; set; }
@@ -20,7 +22,7 @@ namespace FindMeARoommate.DataLayer.DatabaseContext
           public DbSet<Application> Applications { get; set; }
           public DbSet<Announcement> Announcements { get; set; }
 
-
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
                 optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=FindMeARoommate;Integrated Security=True;Trust Server Certificate=True");
