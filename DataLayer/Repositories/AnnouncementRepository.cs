@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace FindMeARoommate.DataLayer.Repositories
 {
-    public class StudentRepository
+   public class AnnouncementRepository
     {
-        public void  AddStudent(Student student)
+        public void AddStudent(Student student)
         { // DbContext Add Method
             var dbContext = new RoommateDBContext();
             dbContext.Students.Add(student);
@@ -23,12 +23,12 @@ namespace FindMeARoommate.DataLayer.Repositories
         {
             var context = new RoommateDBContext();
             var students = context.Students.ToList();
-             return students;
+            return students;
         }
-        
+
         // Get By ID
 
-       public  Student FindByID(int id)
+        public Student FindByID(int id)
         {
             try
             {
@@ -46,9 +46,9 @@ namespace FindMeARoommate.DataLayer.Repositories
             }
         }
 
-       
+
         //Remove
-      public  void DeleteStudent(Student student)
+        public void DeleteStudent(Student student)
         {
             try
             {
@@ -62,12 +62,12 @@ namespace FindMeARoommate.DataLayer.Repositories
                 Console.WriteLine("Error : " + ex.Message.ToString());
                 throw ex;
             }
-        } 
-        
-        
+        }
+
+
         //Update
 
-      public  void UpdateStudent(Student student)
+        public void UpdateStudent(Student student)
         {
             try
             {
@@ -81,5 +81,6 @@ namespace FindMeARoommate.DataLayer.Repositories
                 throw ex;
             }
         }
+
     }
 }

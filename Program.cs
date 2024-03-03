@@ -1,53 +1,40 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using FindMeARoommate.BusinessLayer;
 using FindMeARoommate.DataLayer.DatabaseContext;
 using FindMeARoommate.DataLayer.Entities;
+using FindMeARoommate.DataLayer.Repositories;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System.Linq;
 
-Console.WriteLine("Welcome to Find Roommate Application!");
+Console.WriteLine("Welcome to Find Roomate Application!");
 
-//Retrive and print all record
+Console.WriteLine("--------------------------------------------------");
 
-var context1 = new RoommateDBContext();
-var students = context1.Students.ToList();
+Console.WriteLine("Menu");
+Console.WriteLine("1 - Register");
+Console.WriteLine("2 - Get All students");
+int choice = int.Parse(Console.ReadLine());
 
-foreach (var s in students)
+switch (choice)
 {
-    Console.WriteLine(s.Name + "         " + s.Surname + "        " + s.Address);
+    case 1:
+        {  //Register
+            var studentService = new StudentService();
+            studentService.RegisterStudent();
+
+            break;
+        }
+        case 2:
+        {  //Print all student
+            var studentService = new StudentService();
+            var students = new List<Student>();
+           students = studentService.GetStudents();
+            foreach (var s in students)
+            {
+                Console.WriteLine(s.Name + "   " + s.Surname + "    " + s.Address + "   " + s.Gender);
+            }
+           break;
+        }
 }
 
-//add a dormitory
-//Take data from UI(console)
-
-Console.WriteLine("-------------------------------------------------------------------");
-Console.WriteLine("Register");
-
-var student = new Student();  // register a new student
-
-Console.WriteLine("Enter Name");
-student.Name = Console.ReadLine();
-
-Console.WriteLine("Enter Surname");
-student.Surname = Console.ReadLine();
-
-Console.WriteLine("Enter Address");
-student.Address = Console.ReadLine();
-
-Console.WriteLine("Enter Gender");
-student.Gender = Console.ReadLine();
-
-Console.WriteLine("Enter Email");
-student.Email = Console.ReadLine();
-
-Console.WriteLine("Enter Password");
-student.Password = Console.ReadLine();
-
-//Add Student to db
-var dbContext = new RoommateDBContext();
-await dbContext.Students.AddAsync(student);
-await dbContext.SaveChangesAsync();
-
- Console.WriteLine("Student Added");
-
-
-
-
+Console.WriteLine("--------------------------------------------------");
