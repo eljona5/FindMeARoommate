@@ -21,7 +21,7 @@ foreach (var s in students)
 Console.WriteLine("-------------------------------------------------------------------");
 Console.WriteLine("Register");
 
-var student = new Student();
+var student = new Student();  // register a new student
 
 Console.WriteLine("Enter Name");
 student.Name = Console.ReadLine();
