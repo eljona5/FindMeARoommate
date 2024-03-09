@@ -11,8 +11,16 @@ Console.WriteLine("Welcome to Find Roomate Application!");
 Console.WriteLine("--------------------------------------------------");
 
 Console.WriteLine("Menu");
-Console.WriteLine("1 - Register");
+Console.WriteLine("1 - Register student");
 Console.WriteLine("2 - Get All students");
+Console.WriteLine("3 - Register dormitories");
+Console.WriteLine("4 - Get All dormitories");
+Console.WriteLine("5 - Register application");
+Console.WriteLine("6 - Get All applications");
+Console.WriteLine("7 - Register announcement");
+Console.WriteLine("8 - Get All announcements");
+Console.WriteLine("9 - Log In");
+Console.WriteLine("10 - Go to My Profile");
 int choice = int.Parse(Console.ReadLine());
 
 switch (choice)
@@ -31,10 +39,93 @@ switch (choice)
            students = studentService.GetStudents();
             foreach (var s in students)
             {
-                Console.WriteLine(s.Name + "   " + s.Surname + "    " + s.Address + "   " + s.Gender);
+                Console.WriteLine(s.Name + "   " + s.Surname + "    " + s.Address + "   " + s.Gender  + "   " + s.Email + "  " +s.Password + "  "+s.Birthday  );
             }
            break;
         }
+
+    case 3:
+        {  //Register
+            var dormitoryService = new DormitoryService();
+            dormitoryService.RegisterDormitory();
+
+            break;
+        }
+    case 4:
+        {  //Print all dormitories
+            var dormitoryService = new DormitoryService();
+            var dormitory = new List<Dormitory>();
+            dormitory = dormitoryService.GetDormitories();
+            foreach (var d in dormitory)
+            {
+                Console.WriteLine(d.Capacity + "   " + d.Code + "    " + d.Address);
+            }
+            break;
+        }
+
+    case 5:
+        {  //Register
+            var applicationService = new ApplicationService();
+            applicationService.RegisterApplication();
+
+            break;
+        }
+    case 6:
+        {  //Print all application
+            var applicationService = new ApplicationService();
+            var application = new List<Application>();
+            application = applicationService.GetApplications();
+            foreach (var a in application)
+            {
+                Console.WriteLine(a.AnnouncementID + "   " + a.Announcement + "    " + a.Status + "     " + a.StudentID + "      " + a.Applicant + "     " + a.ApplicationDate + "     " + a.IsActive);
+            }
+            break;
+        }
+
+    case 7:
+        {  //Register
+            var announcementService = new AnnouncementService();
+            announcementService.RegisterAnnouncement();
+
+            break;
+        }
+    case 8:
+        {  //Print all   announcement
+            var announcementService = new AnnouncementService();
+            var announcement = new List<Announcement>();
+            announcement = announcementService.GetAnnouncements();
+            foreach (var a in announcement)
+            {
+                Console.WriteLine(a.StudentID + "   " + a.Title + "    " + a.Description + "     " + a.PublishedDate + "      " + a.AnnouncementOwner + "     " + a.IsSameGender + "     " + a.IsActive);
+            }
+            break;
+        }
+    case 9 :
+        {
+            Console.WriteLine("Enter Email");
+            var Email = Console.ReadLine();
+            Console.WriteLine("Enter Password");
+            var Password = Console.ReadLine();
+            var studentService = new StudentService();
+            studentService.LogIn(Email, Password);
+            break;
+        }
+    case 10:
+        {
+            Console.WriteLine("Enter Email");
+            var Email = Console.ReadLine();
+            Console.WriteLine("My profile");
+            var studentService = new StudentService();
+            studentService.GetMyProfile(Email);
+            
+            break;
+        }
+
 }
+
+
+
+
+
 
 Console.WriteLine("--------------------------------------------------");
