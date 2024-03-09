@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FindMeARoommate")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b70e930a41f8fc8d440824072d54be8c38439765")]
 [assembly: System.Reflection.AssemblyProductAttribute("FindMeARoommate")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FindMeARoommate")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
