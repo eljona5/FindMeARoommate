@@ -86,7 +86,7 @@ namespace FindMeARoommate.BusinessLayer
             var allStudents= studentRepository.GetAllStudent();
 
             var student = allStudents
-                .Where(p =>  p.Email.Equals(email, StringComparison.CurrentCultureIgnoreCase))//Ignore Case Password
+                .Where(p =>  p.Email.Equals(email, StringComparison.CurrentCultureIgnoreCase))//Ignore Case email
                 .FirstOrDefault();
 
             //Check the result

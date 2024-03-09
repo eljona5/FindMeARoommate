@@ -13,13 +13,13 @@ namespace FindMeARoommate.DataLayer.Repositories
         public void  AddStudent(Student student)
         { // DbContext Add Method
             var dbContext = new RoommateDBContext();
-            dbContext.Students.Add(student);
-            dbContext.SaveChanges();
+          dbContext.Students.Add(student);
+           dbContext.SaveChanges();
         }
 
 
         // Get All Student
-        public List<Student> GetAllStudent()
+        public  List<Student> GetAllStudent()
         {
             var context = new RoommateDBContext();
             var students = context.Students.ToList();

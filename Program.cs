@@ -4,7 +4,9 @@ using FindMeARoommate.DataLayer.DatabaseContext;
 using FindMeARoommate.DataLayer.Entities;
 using FindMeARoommate.DataLayer.Repositories;
 using Microsoft.EntityFrameworkCore.Migrations.Operations;
+using System;
 using System.Linq;
+
 
 Console.WriteLine("Welcome to Find Roomate Application!");
 
@@ -17,10 +19,11 @@ Console.WriteLine("3 - Register dormitories");
 Console.WriteLine("4 - Get All dormitories");
 Console.WriteLine("5 - Register application");
 Console.WriteLine("6 - Get All applications");
-Console.WriteLine("7 - Register announcement");
+Console.WriteLine("7 - Make an Announcement");
 Console.WriteLine("8 - Get All announcements");
 Console.WriteLine("9 - Log In");
 Console.WriteLine("10 - Go to My Profile");
+Console.WriteLine("11 - Approved application");
 int choice = int.Parse(Console.ReadLine());
 
 switch (choice)
@@ -65,8 +68,15 @@ switch (choice)
 
     case 5:
         {  //Register
+
+            Console.WriteLine(" enter  Email");
+            var email = Console.ReadLine();
+
+            Console.WriteLine(" enter Title");
+            var title = Console.ReadLine();
+
             var applicationService = new ApplicationService();
-            applicationService.RegisterApplication();
+            applicationService.AddApplication(email,title);
 
             break;
         }
@@ -83,17 +93,22 @@ switch (choice)
         }
 
     case 7:
-        {  //Register
-            var announcementService = new AnnouncementService();
-            announcementService.RegisterAnnouncement();
+        {  //Make an Annoucement
+            Console.WriteLine(" enter Student Email");
+            var email = Console.ReadLine();
+
+
+            //register
+            var studentService = new AnnouncementService();
+            studentService.AddAnnouncement(email);
 
             break;
         }
     case 8:
         {  //Print all   announcement
             var announcementService = new AnnouncementService();
-            var announcement = new List<Announcement>();
-            announcement = announcementService.GetAnnouncements();
+            
+          var  announcement = announcementService.GetAnnouncements();
             foreach (var a in announcement)
             {
                 Console.WriteLine(a.StudentID + "   " + a.Title + "    " + a.Description + "     " + a.PublishedDate + "      " + a.AnnouncementOwner + "     " + a.IsSameGender + "     " + a.IsActive);
@@ -117,6 +132,17 @@ switch (choice)
             Console.WriteLine("My profile");
             var studentService = new StudentService();
             studentService.GetMyProfile(Email);
+            
+            break;
+        }
+        case 11:
+        {
+            Console.WriteLine("enter ID");
+            var applicationID =int.Parse(Console.ReadLine());
+
+            var applicationService = new ApplicationService();
+            applicationService.ApprovoApplication(applicationID);
+
             
             break;
         }

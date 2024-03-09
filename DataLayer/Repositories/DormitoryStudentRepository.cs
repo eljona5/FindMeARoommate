@@ -8,36 +8,36 @@ using System.Threading.Tasks;
 
 namespace FindMeARoommate.DataLayer.Repositories
 {
-   public class AnnouncementRepository
+    public class DormitoryStudentRepository
     {
-        public void AddAnnouncement(Announcement announcement)
+        public void AddDormitoryStudent(DormitoryStudent dormitoryStudent)
         { // DbContext Add Method
             var dbContext = new RoommateDBContext();
-            dbContext.Announcements.Add(announcement);
+            dbContext.DormitoryStudents.Add(dormitoryStudent);
             dbContext.SaveChanges();
         }
 
 
-        // Get All announcement
-        public List<Announcement> GetAllAnnouncement()
+        // Get All DormitoryStudent
+        public List<DormitoryStudent> GetAllDormitoryStudents()
         {
             var context = new RoommateDBContext();
-            var announcement = context.Announcements .ToList();
-            return announcement;
+            var dormitoryStudent = context.DormitoryStudents.ToList();
+            return dormitoryStudent;
         }
 
         // Get By ID
 
-        public Announcement FindByID(int id)
+        public DormitoryStudent FindByID(int id)
         {
             try
             {
                 var dbContext = new RoommateDBContext();
 
-                var announcement = dbContext.Announcements.Where(p => p.ID == id)
+                var dormitoryStudent = dbContext.DormitoryStudents.Where(p => p.ID == id)
                     .FirstOrDefault();
 
-                return announcement;
+                return dormitoryStudent;
             }
             catch (Exception ex)
             {
@@ -48,14 +48,14 @@ namespace FindMeARoommate.DataLayer.Repositories
 
 
         //Remove
-        public void DeleteAnnouncement(Announcement announcement)
+        public void DeleteDormitoryStudent(DormitoryStudent dormitoryStudent)
         {
             try
             {
                 var dbContext = new RoommateDBContext();
-                dbContext.Announcements.Remove(announcement);
+                dbContext.DormitoryStudents.Remove(dormitoryStudent);
                 dbContext.SaveChanges();
-                Console.WriteLine("Announcement removed");
+                Console.WriteLine("DormitoryStudent removed");
             }
             catch (Exception ex)
             {
@@ -67,12 +67,12 @@ namespace FindMeARoommate.DataLayer.Repositories
 
         //Update
 
-        public void UpdateAnnouncement(Announcement announcement)
+        public void UpdateDormitoryStudent(DormitoryStudent dormitoryStudent)
         {
             try
             {
                 var dbContext = new RoommateDBContext();
-                dbContext.Announcements.Update(announcement);
+                dbContext.DormitoryStudents.Update(dormitoryStudent);
                 dbContext.SaveChanges();
             }
             catch (Exception ex)
@@ -81,6 +81,5 @@ namespace FindMeARoommate.DataLayer.Repositories
                 throw ex;
             }
         }
-
     }
 }
